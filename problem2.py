@@ -59,14 +59,11 @@ class GradDec:
 
     def learn(self):
         for i in range(0,self.iters):
-            if self.delta < 1e-15:
-                print i
             prevR = self.R
             for i in range(0,self.n):
                 self.beta = self.beta + (self.alpha/float(self.n))*(self.y[i]-np.dot(self.beta,self.x[i]))*self.x[i]
             self.updateR()
             self.delta = abs(self.R-prevR)
-        print
 
     def updateR(self):
         R = 0
@@ -98,7 +95,7 @@ class GradDec:
                 of.write((('%d,%d,%.4f,%.4f,%.4f') % (self.alpha, self.iters, self.beta[0], self.beta[1], self.beta[2])+'\n'))
 
 if __name__ == '__main__':
-    print 'Initializing Problem 2'
+    #print 'Initializing Problem 2'
 
     # Check correct arguments
     if len(sys.argv) != 3:
@@ -119,8 +116,6 @@ if __name__ == '__main__':
             gd = GradDec(tuples, sys.argv[2], a, 100)
             gd.learn()
             gd.printResult()
-            gd.plot()
         gd = GradDec(tuples, sys.argv[2], 7.15, 16)
         gd.learn()
         gd.printResult()
-        gd.plot()

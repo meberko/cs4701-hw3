@@ -52,7 +52,6 @@ class Perceptron:
             y = np.dot(self.weights, x)
             predicted = 1 if y > 0 else -1
             self.weights += self.gamma*label*x
-        self.plot(iters)
 
     def plot(self, its):
         plt.figure()
@@ -67,7 +66,7 @@ class Perceptron:
         plt.show()
 
 if __name__ == '__main__':
-    print 'Initializing Percy the Perceptron'
+    #print 'Initializing Percy the Perceptron'
 
     # Check correct arguments
     if len(sys.argv) != 3:
